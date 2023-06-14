@@ -60,7 +60,7 @@ function filterByDuration(list, low, high) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on Duration and return filtered list
 const filterdList = list.filter(
-  (key) => key.duration > low && key.duration <= high
+  (key) => key.duration >= low && key.duration <= high
 )
 return filteredList;
 }
@@ -70,7 +70,7 @@ function filterByCategory(list, categoryList) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on their Category and return filtered list
 const filteredList = list.filter(
-  (key) => categoryList.includes(key)
+  (key) => categoryList.includes(key.category)
 )
 return filteredList;
 }
@@ -95,7 +95,7 @@ if (filters["duration"].length > 0 && filters["category"].length > 0){
   let choice = filters["duration"].split("-");
   filteredList = filterByDuration(list, parseInt(choice[0]), parseInt(choice[1]));
 } else if (filters["category"].length > 0){
-  filteredList = filterByCategory(filteredList,filters["category"]);
+  filteredList = filterByCategory(list,filters["category"]);
 } else {
   filteredList = list;
 }
@@ -132,11 +132,11 @@ function generateFilterPillsAndUpdateDOM(filters) {
   // 1. Use the filters given as input, update the Duration Filter value and Generate Category Pills
 document.getElementById("duration-select").value = filters.duration;
 filters["category"].forEach((key) => {
-let ele = document.createElement("div");
-ele.className = "category-filter";
-ele.innerHTML = `<div>${key}</div>`;
-document.getElementById("category-list").appendChild(ele);
-})
+  let ele = document.createElement("div");
+  ele.className = "category-filter";
+  ele.innerHTML = `<div>${key}</div>`;
+  document.getElementById("category-list").appendChild(ele);
+ })
 }
 export {
   getCityFromURL,
