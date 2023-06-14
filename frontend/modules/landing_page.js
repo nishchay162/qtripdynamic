@@ -1,7 +1,7 @@
 import config from "../conf/index.js";
 
 async function init() {
-  //Fetches list of all cities along with their images and description
+  //Fetches list of all citiecitiescitiecitiesss along with their images and description
   let cities = await fetchCities();
   console.log("cities",cities)
 
@@ -47,3 +47,4 @@ cityElem.innerHTML=`
 }
 
 export { init, fetchCities, addCityToDOM };
+
