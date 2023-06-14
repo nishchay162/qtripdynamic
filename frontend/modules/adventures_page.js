@@ -24,10 +24,10 @@ async function fetchAdventures(city) {
 }
 
 //Implementation of DOM manipulation to add adventures for the given city from list of adventures
-function addAdventureToDOM(adventures) {
+function addAdventureToDOM(adventure) {
   // TODO: MODULE_ADVENTURES
   // 1. Populate the Adventure Cards and insert those details into the DOM
-  adventures.forEach((adventure) => {
+  adventure.forEach((adventure) => {
     const adventureEle = document.createElement("div");
     adventureEle.className = "col-6 col-lg-3 mb-4 position-relative";
     adventureEle.innerHTML= `
@@ -59,7 +59,7 @@ function addAdventureToDOM(adventures) {
 function filterByDuration(list, low, high) {
   // TODO: MODULE_FILTERS
   // 1. Filter adventures based on Duration and return filtered list
-const filterdList = list.filter(
+const filteredList = list.filter(
   (key) => key.duration >= low && key.duration <= high
 )
 return filteredList;
