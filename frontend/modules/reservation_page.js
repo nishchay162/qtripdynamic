@@ -32,8 +32,8 @@ function addReservationToTable(reservations) {
   
   //Conditionally render the no-reservation-banner and reservation-table-parent
   reservations.map((key,idx)=>{
-    let trEle=document.createElement("tr");
-    trEle.innerHTML =`
+    let ele=document.createElement("tr");
+    ele.innerHTML =`
     <th scope="row">${key.id}</th>
     <td>${key.name}</td>
     <td>${key.adventureName}</td>
@@ -48,10 +48,10 @@ function addReservationToTable(reservations) {
       minute:"numeric",
       second:"numeric",
       hour12:true,
-    })}</td>
-    <td> div class="reservation-visit-button"id=${key.id}<a href="../detail/?adventure=${key.adventure}">Visit Adventure</a></div></td>
+    }).replace(" at",",")}</td>
+    <td> <div class="reservation-visit-button"id=${key.id}><a href="../detail/?adventure=${key.adventure}">Visit Adventure</a></div></td>
     `
-    document.getElementById("reservation-table").appendChild(trEle);
+    document.getElementById("reservation-table").appendChild(ele);
   })
   /*
     Iterating over reservations, adding it to table (into div with class "reservation-table") and link it correctly to respective adventure
